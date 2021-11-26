@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_card"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/card_bg"
+    android:elevation="3dp"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/card_amount_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Оценка портфеля"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/get_info"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_alert_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/card_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="145,309.39 $"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/card_amount_desc"
+        app:layout_constraintTop_toBottomOf="@id/card_amount_desc" />
+
+    <TextView
+        android:id="@+id/card_raise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="78.16 %"
+        android:textColor="@color/light_green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/card_amount"
+        app:layout_constraintTop_toBottomOf="@id/card_amount" />
+
+    <ImageView
+        android:id="@+id/img_card_raise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:src="@drawable/ic_arrow_up_right"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/card_raise"
+        app:layout_constraintStart_toEndOf="@id/card_raise"
+        app:layout_constraintTop_toTopOf="@id/card_raise" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/card_raise"
+        app:layout_constraintTop_toBottomOf="@id/card_raise">
+
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/grade_pb"-->
+        <!--            style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="20dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:layout_marginEnd="20dp"-->
+        <!--            android:background="@null"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:max="3"-->
+        <!--            android:progressDrawable="@drawable/progress_bar"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/grade_pb"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/progress_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/dot_bg"
+            app:layout_constraintStart_toStartOf="@id/grade_pb"
+            app:layout_constraintTop_toBottomOf="@id/grade_pb" />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/dot_bg2"
+            app:layout_constraintEnd_toEndOf="@id/dot3"
+            app:layout_constraintStart_toEndOf="@id/dot1"
+            app:layout_constraintTop_toBottomOf="@id/grade_pb" />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/dot_bg3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/grade_pb" />
+
+        <TextView
+            android:id="@+id/view_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="В акциях"
+            app:layout_constraintStart_toStartOf="@id/dot1"
+            app:layout_constraintTop_toBottomOf="@id/dot1" />
+
+        <TextView
+            android:id="@+id/view_desc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Остаток USD"
+            app:layout_constraintStart_toStartOf="@id/dot2"
+            app:layout_constraintTop_toBottomOf="@id/dot2" />
+
+        <TextView
+            android:id="@+id/view_desc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Остаток RUB"
+            app:layout_constraintStart_toStartOf="@id/dot3"
+            app:layout_constraintTop_toBottomOf="@id/dot3" />
+
+        <TextView
+            android:id="@+id/stock_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingBottom="15dp"
+            android:text="76,616.42 $"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/view_desc"
+            app:layout_constraintTop_toBottomOf="@id/view_desc" />
+
+        <TextView
+            android:id="@+id/balance_usd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingBottom="15dp"
+            android:text="76,616.42 $"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/view_desc2"
+            app:layout_constraintTop_toBottomOf="@id/view_desc2" />
+
+        <TextView
+            android:id="@+id/balance_rub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingBottom="15dp"
+            android:text="0.0 ₽"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/view_desc3"
+            app:layout_constraintTop_toBottomOf="@id/view_desc3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/withDrawn_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Выведено"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/card_amount"
+        app:layout_constraintTop_toBottomOf="@id/card_amount" />
+
+    <TextView
+        android:id="@+id/withDrawn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="95,607.00 $"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/withDrawn_desc"
+        app:layout_constraintTop_toBottomOf="@+id/withDrawn_desc" />
+
+    <TextView
+        android:id="@+id/team_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="480"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/team_img"
+        app:layout_constraintStart_toEndOf="@+id/team_img"
+        app:layout_constraintTop_toTopOf="@id/team_img" />
+
+    <ImageView
+        android:id="@+id/team_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_group"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/withDrawn_desc"
+        app:layout_constraintTop_toBottomOf="@+id/withDrawn_desc" />
+
+    <TextView
+        android:id="@+id/card_balance_rub_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="45dp"
+        android:text="Пополнено RUB"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/card_amount" />
+
+    <TextView
+        android:id="@+id/card_withdrawn_rub_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="Пополнено RUB"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/card_balance_rub_desc"
+        app:layout_constraintTop_toTopOf="@id/card_balance_rub_desc" />
+
+    <TextView
+        android:id="@+id/card_balance_rub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0,00 ₽"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/card_balance_rub_desc"
+        app:layout_constraintTop_toBottomOf="@+id/card_balance_rub_desc" />
+
+    <TextView
+        android:id="@+id/card_withdrawn_rub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0,00 ₽"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/card_withdrawn_rub_desc"
+        app:layout_constraintTop_toBottomOf="@+id/card_withdrawn_rub_desc" />
+
+    <ImageButton
+        android:id="@+id/refill_add_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_bg"
+        android:elevation="2dp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="@id/withDrawn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/withDrawn" />
+
+    <TextView
+        android:id="@+id/bonus_rub_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/enable_btn_bg"
+        android:gravity="center"
+        android:src="@drawable/ic_rub"
+        android:text="RUB"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/card_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_amount" />
+
+    <TextView
+        android:id="@+id/bonus_usd_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/disable_btn_bg"
+        android:gravity="center"
+        android:src="@drawable/ic_usd"
+        android:text="USD"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/card_amount"
+        app:layout_constraintStart_toEndOf="@id/bonus_rub_btn"
+        app:layout_constraintTop_toTopOf="@id/card_amount" />
+</androidx.constraintlayout.widget.ConstraintLayout>

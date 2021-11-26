@@ -1,0 +1,22 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+
+            <gradient
+                android:angle="360"
+                android:centerX="0.0"
+                android:centerY="0.5"
+                android:endColor="@color/light_green"
+                android:startColor="@color/violite"
+                android:type="radial" />
+
+            <gradient
+                android:angle="190"
+                android:centerX="0.0"
+                android:centerY="0.5"
+                android:startColor="@color/violite"
+                android:type="radial" />
+            <corners android:radius="30dp" />
+        </shape>
+    </item>
+</layer-list>
