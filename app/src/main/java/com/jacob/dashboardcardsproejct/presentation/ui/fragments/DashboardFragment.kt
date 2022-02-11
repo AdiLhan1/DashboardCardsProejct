@@ -1,5 +1,6 @@
 package com.jacob.dashboardcardsproejct.presentation.ui.fragments
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import com.jacob.dashboardcardsproejct.base.BaseEmptyFragment
 import com.jacob.dashboardcardsproejct.data.network.entities.DashboardResponse
@@ -17,9 +18,24 @@ class DashboardFragment :
 
     private val listOfCards = mutableListOf<DashboardResponse>()
 
+    private var lastPos = -1
+
     override fun initialize() {
-        adapter = DashboardCardsAdapter()
+        adapter = DashboardCardsAdapter(this::toggleSelectedStatus)
         binding.rvCards.adapter = adapter
+    }
+
+    private fun toggleSelectedStatus(id: String, isSelected: Boolean, position: Int) {
+        Log.e("TAG", "toggleSelectedStatus: TOtal: $id Status: $isSelected")
+        if (lastPos != -1 && lastPos != position) {
+            listOfCards[lastPos].isSelected = false
+            adapter?.notifyItemChanged(lastPos)
+        }
+        listOfCards[position].isSelected = true
+        lastPos = position
+        adapter?.notifyItemChanged(position)
+
+        adapter?.submitList(listOfCards)
     }
 
     private fun showData(response: DashboardResponse) {

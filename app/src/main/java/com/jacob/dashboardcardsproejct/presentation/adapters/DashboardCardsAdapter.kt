@@ -1,10 +1,12 @@
 package com.jacob.dashboardcardsproejct.presentation.adapters
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.jacob.dashboardcardsproejct.R
 import com.jacob.dashboardcardsproejct.data.network.entities.DashboardResponse
 import com.jacob.dashboardcardsproejct.databinding.TopCardViewBinding
 import com.jacob.dashboardcardsproejct.extensions.showToast
@@ -12,11 +14,23 @@ import com.jacob.dashboardcardsproejct.extensions.snack
 import com.jacob.dashboardcardsproejct.presentation.utils.cardGoneView
 import com.jacob.dashboardcardsproejct.presentation.utils.cardVisibleView
 
-class DashboardCardsAdapter :
+class DashboardCardsAdapter(
+    private val clickListener: (String, Boolean,Int) -> Unit
+) :
     ListAdapter<DashboardResponse, DashboardCardsAdapter.ViewHolder>(CardDiffCallback()) {
 
-    inner class ViewHolder(private val binding: TopCardViewBinding) :
+    inner class ViewHolder(
+        private val binding: TopCardViewBinding,
+        private val clickListener: (String, Boolean,Int) -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                clickListener("", !it.isSelected,absoluteAdapterPosition)
+            }
+        }
+
         @SuppressLint("SetTextI18n")
         fun onBind(model: DashboardResponse) {
             with(binding) {
@@ -104,6 +118,16 @@ class DashboardCardsAdapter :
                         it.snack("Пока вы не можете пополнить счет")
                     }
                 }
+                bindSelectedState(model.isSelected)
+            }
+        }
+
+        fun bindSelectedState(isSelected: Boolean) {
+            binding.topCard.isSelected = isSelected
+            if (isSelected) {
+                binding.topCard.setBackgroundResource(R.drawable.enable_btn_bg)
+            } else {
+                binding.topCard.setBackgroundResource(R.drawable.disable_btn_bg)
             }
         }
     }
@@ -113,8 +137,22 @@ class DashboardCardsAdapter :
         return ViewHolder(
             TopCardViewBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
-            )
+            ), clickListener
         )
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
+//        if (!payloads.isEmpty()) {
+//            // Because these updates can be batched,
+//            // there can be multiple payloads for a single bind
+//            if (payloads.any { it is DashboardResponse })
+////                holder.onBind()
+//
+//        }
+        // When payload list is empty,
+        // or we don't have logic to handle a given type,
+        // default to full bind:
+        super.onBindViewHolder(holder, position, payloads)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

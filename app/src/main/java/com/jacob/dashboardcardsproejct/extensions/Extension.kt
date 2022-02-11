@@ -15,17 +15,17 @@ fun <T> Fragment.subscribeTo(
     loader: ProgressBar,
     setupData: (T) -> Unit
 ) = with(state) {
-    isLoading.observe(viewLifecycleOwner, {
+    isLoading.observe(viewLifecycleOwner) {
         loader.isVisible = it
-    })
+    }
 
-    error.observe(viewLifecycleOwner, {
+    error.observe(viewLifecycleOwner) {
         context?.showToast(it)
-    })
+    }
 
-    data.observe(viewLifecycleOwner, {
+    data.observe(viewLifecycleOwner) {
         setupData(it)
-    })
+    }
 }
 
 fun Context.showToast(msg: String) {

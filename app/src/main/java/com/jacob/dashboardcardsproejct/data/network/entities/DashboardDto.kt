@@ -31,4 +31,5 @@ class DashboardResponse(
     val team: Int?,
     @SerializedName("totalUSD")
     val totalUSD: Double,
+    var isSelected: Boolean
 )
